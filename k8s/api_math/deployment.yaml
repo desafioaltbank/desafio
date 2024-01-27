@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api_math
+  name: apimath
 spec:
   selector:
     matchLabels:
-      app: api_math
+      app: apimath
   template:
     metadata:
       labels:
-        app: api_math
+        app: apimath
     spec:
       containers:
-        - name: api_math
-          image: api_math
+        - name: apimath
+          image: apimath
           ports:
             - containerPort: 8080
