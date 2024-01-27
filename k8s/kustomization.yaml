@@ -1,12 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - apimath/deployment.yaml
-  - apimath/service.yaml
+- apimath/deployment.yaml
+- apimath/service.yaml
 
 namespace: apimath
 
 images:
-  - name: apimath
-    newName: renasti/api-math
-    newTag: 7cba8e3ec76fc825d62dc7cade4f2196c583434c
+- name: apimath
+  newName: renasti/api-math
+  newTag: 6955b1351a485d0b5adf9ccdcdabf83cf25e3f5f
