@@ -9,4 +9,4 @@ namespace: apimath
 images:
 - name: apimath
   newName: renasti/api-math
-  newTag: ec7fb60dfe5410bed39fa1aa82381e5d6b95954b
+  newTag: 279e688606ed4f021190a83e6ebd9a35b49b5e05
