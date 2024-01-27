@@ -40,7 +40,7 @@ jobs:
       - name: update kubernetes
         run: |
           cd k8s
-          kustomize edit set image api-math=renasti/api-math:${{ github.sha }}
+          kustomize edit set image apimath=renasti/api-math:${{ github.sha }}
           cat kustomization.yaml
 
       - name: commit

@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
         - name: apimath
-          image: api-math
+          image: apimath
           ports:
             - containerPort: 8080
