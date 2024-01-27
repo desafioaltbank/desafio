@@ -21,7 +21,7 @@ jobs:
         with:
           username: renasti
           password: ${{ secrets.PWD_DOCKER }}
-          repository: renasti/apimath
+          repository: renasti/desafio-altbk
           tags: ${{ github.sha }}, latest
 
   deploy:
@@ -40,7 +40,7 @@ jobs:
       - name: update kubernetes
         run: |
           cd k8s
-          kustomize edit set image apimath=renasti/apimath:${{ github.sha }}
+          kustomize edit set image apimath=renasti/desafio-altbk:${{ github.sha }}
           cat kustomization.yaml
 
       - name: commit
