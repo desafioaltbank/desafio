@@ -77,7 +77,7 @@ argocd cluster list
 13- Test your cluster with argoCD, use the repo demo nginx:
 
 ```
-argocd app create nginx-app --repo https://github.com/renatovieiradesouza/k8s-deploy-nginx-example.git --path . --sync-policy automated --sync-retry-limit 5 --self-heal --dest-server https://kubernetes.default.svc --dest-namespace default
+argocd app create nginx-app --repo https://github.com/renatovieiradesouza/k8s-deploy-nginx-example.git --path . --sync-policy automated --sync-retry-limit 5 --self-heal --auto-prune --dest-server https://kubernetes.default.svc --dest-namespace default
 ```
 
 14- Confirm your app is create:
@@ -128,3 +128,25 @@ argocd app set api-math --sync-policy automated
 ```
 
 6- Now this repo be linked with argocd, change your app, make a push and test automated sync
+
+7- Test api with:
+
+```
+kubectl port-forward svc/apimath -n apimath 8282:8080
+
+Powershell
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Content-Type", "application/json")
+
+$body = @"
+{`"number`": 104743}
+"@
+
+$response = Invoke-RestMethod 'http://localhost:8282/prime' -Method 'POST' -Headers $headers -Body $body
+$response | ConvertTo-Json
+
+Linux
+
+curl -X POST -H "Content-Type: application/json" -d '{"number": 104743}' http://localhost:8282/prime
+
+```

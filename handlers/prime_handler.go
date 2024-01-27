@@ -51,7 +51,6 @@ func PrimeHandler(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(responseData)
 	} else {
 		w.WriteHeader(http.StatusNotFound)
-		fmt.Fprintf(w, "Is not a prime number\n%s", toJSON(responseData))
 	}
 }
 
