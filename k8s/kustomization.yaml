@@ -7,12 +7,6 @@ resources:
 namespace: apimath
 
 images:
-<<<<<<< Updated upstream
-- name: apimath
-  newName: renasti/api-math
-  newTag: a6e667570d2d9795e82c6c9b0a4df2763c463d96
-=======
   - name: apimath
     newName: renasti/apimath
     newTag: 6598e658b87447df8c99842c6e8b0121961b8aef
->>>>>>> Stashed changes
