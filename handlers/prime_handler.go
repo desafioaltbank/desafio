@@ -46,11 +46,13 @@ func PrimeHandler(w http.ResponseWriter, r *http.Request) {
 		Prime:  isPrimeNumber,
 	}
 
+	//Retorno
 	w.Header().Set("Content-Type", "application/json")
 	if isPrimeNumber {
 		json.NewEncoder(w).Encode(responseData)
 	} else {
 		w.WriteHeader(http.StatusNotFound)
+		fmt.Fprintf(w, toJSON(responseData))
 	}
 }
 
