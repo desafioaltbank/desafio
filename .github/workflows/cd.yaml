@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: build image & push to docker hub
         uses: docker/build-push-action@v1.1.0
