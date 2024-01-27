@@ -6,6 +6,9 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # 'write' access to repository contents
+      pull-requests: write # 'write' access to pull requests
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -45,3 +48,5 @@ jobs:
 
       - name: push
         uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
