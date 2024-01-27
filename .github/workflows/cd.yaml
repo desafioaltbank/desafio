@@ -11,9 +11,10 @@ jobs:
       pull-requests: write # 'write' access to pull requests
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0
 
       - name: build image & push to docker hub
         uses: docker/build-push-action@v1.1.0
