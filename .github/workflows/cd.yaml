@@ -17,9 +17,10 @@ jobs:
           fetch-depth: 0
 
       - name: build image & push to docker hub
-        uses: docker/build-push-action@v1.1.0
+        uses: docker/build-push-action@v2
         with:
           context: ./src
+          dockerfile: Dockerfile
           username: renasti
           password: ${{ secrets.PWD_DOCKER }}
           repository: renasti/desafio-altbk
