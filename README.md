@@ -77,7 +77,7 @@ argocd cluster list
 13- Test your cluster with argoCD, use the repo demo nginx:
 
 ```
-argocd app create nginx-app --repo https://github.com/renatovieiradesouza/k8s-deploy-nginx-example.git --path . --dest-server https://kubernetes.default.svc --dest-namespace default
+argocd app create nginx-app --repo https://github.com/renatovieiradesouza/k8s-deploy-nginx-example.git --path . --sync-policy automated --sync-retry-limit 5 --self-heal --dest-server https://kubernetes.default.svc --dest-namespace default
 ```
 
 14- Confirm your app is create:
