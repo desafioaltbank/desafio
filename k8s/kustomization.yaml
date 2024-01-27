@@ -9,4 +9,4 @@ namespace: apimath
 images:
 - name: apimath
   newName: renasti/desafio-altbk
-  newTag: 8039d33233555306e250a6d60cedba59b887f593
+  newTag: 04e0a3aeb8f17b794bfca678e6dab95a9d496494
