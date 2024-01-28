@@ -1,12 +1,21 @@
 ## Steps to Success
 
-1- Install Kind
+> Disclaimer: All steps below worked on Windows 11 Pro with Powershell on version 5.1
+
+1- Install Kind, Kubens and Kubectx
 
 ```
-Visit: https://kind.sigs.k8s.io/docs/user/quick-start/#installation
+Kind: https://kind.sigs.k8s.io/docs/user/quick-start/#installation
+Kubens and Kubectx:  https://github.com/ahmetb/kubectx
 ```
 
-2- Create a cluster kind in ./argocd/cluster.yaml:
+2- Download repo desafio:
+
+```
+git clone https://github.com/desafioaltbank/desafio.git
+```
+
+3- Create a cluster kind in ./argocd/cluster.yaml:
 
 ```
 kind create cluster --name cluster-alt-bank --config=argocd/kind_cluster.yaml
@@ -92,13 +101,7 @@ argocd app list and argocd app get nginx-app
 argocd app sync nginx-app
 ```
 
-16- Enable auto sync to repo:
-
-```
-argocd app set nginx-app --sync-policy automated
-```
-
-17- Test with change in your repo, change number of replicas
+16- Test with change in your repo, change number of replicas
 
 ## Working with a manifest argocd
 
@@ -118,18 +121,14 @@ kubectl  create ns apimath
 4- Create a app in argocd:
 
 ```
-argocd app create api-math --repo https://github.com/desafioaltbank/desafio.git --path ./k8s --dest-server https://kubernetes.default.svc --dest-namespace apimath
+kubens argocd
+
+argocd app create api-math --repo https://github.com/desafioaltbank/desafio.git --path ./k8s --dest-server https://kubernetes.default.svc --sync-policy automated --sync-retry-limit 5 --self-heal --auto-prune --dest-namespace apimath
 ```
 
-5- Enable auto sync to repo:
+5- Now this repo be linked with argocd, change your app, make a push and test automated sync
 
-```
-argocd app set api-math --sync-policy automated
-```
-
-6- Now this repo be linked with argocd, change your app, make a push and test automated sync
-
-7- Test api with:
+6- Test api with:
 
 ```
 kubectl port-forward svc/apimath -n apimath 8282:8080
@@ -149,4 +148,10 @@ Linux
 
 curl -X POST -H "Content-Type: application/json" -d '{"number": 104743}' http://localhost:8282/prime
 
+```
+
+7- Destroy cluster:
+
+```
+kind delete clusters cluster-alt-bank
 ```
