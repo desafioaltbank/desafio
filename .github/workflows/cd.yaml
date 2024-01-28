@@ -1,9 +1,10 @@
 name: Continuous Deployment
+# Only to validate the pipeline
 on:
-  pull_request:
-    # Only to validate the pipeline
-    branches:
-      - main
+  push:
+    tags:
+      - desafio* # Example of tag: desafio.1
+
 jobs:
   build:
     name: Build
