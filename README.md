@@ -120,7 +120,7 @@ kubectl port-forward svc/nginx-svc 9090:9113
 
 access: [http://localhost:9090/metrics](http://localhost:9090/metrics)
 
-## Working with a manifest argocd
+## Working with manifest to argocd
 
 1- In repository contain manifest to configure repository git, build image, math app code and github actions code
 2- Retrieve then address your cluster with:
@@ -150,7 +150,8 @@ argocd app create api-math --repo https://github.com/desafioaltbank/desafio.git 
 ```
 kubectl port-forward svc/apimath -n apimath 8282:8080
 
-Powershell
+Powershell:
+
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Content-Type", "application/json")
 
@@ -161,17 +162,15 @@ $body = @"
 $response = Invoke-RestMethod 'http://localhost:8282/prime' -Method 'POST' -Headers $headers -Body $body
 $response | ConvertTo-Json
 
-Linux
+Linux:
 
 curl -X POST -H "Content-Type: application/json" -d '{"number": 104743}' http://localhost:8282/prime
 
 ```
 
-7- Test the pipeline in Github Actions send a PR to execute the action:
+7- Test the pipeline in Github Actions. Send a commit to execute the action:
 
-access: [github.com/desafioaltbank/desafio/actions](https://github.com/desafioaltbank/desafio/actions)
-
-7- Destroy cluster:
+8- Destroy cluster:
 
 ```
 kind delete clusters cluster-alt-bank
