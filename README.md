@@ -52,7 +52,7 @@ $passwordArgo=kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpa
 [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($passwordArgo))
 ```
 
-9- Login Argocd in http://localhost:8080 with user: admin and password retrieved in the step 6
+9- Login Argocd in http://localhost:8080 with user: admin and password retrieved in the step 8
 
 10- Login by terminal with:
 
