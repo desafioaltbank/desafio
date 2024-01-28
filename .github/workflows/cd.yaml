@@ -1,9 +1,7 @@
 name: Continuous Deployment
-# Only to validate the pipeline
 on:
   push:
-    tags:
-      - desafio* # Example of tag: desafio.1
+    branches: [main]
 
 jobs:
   build:
