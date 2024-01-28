@@ -15,6 +15,12 @@ Kubens and Kubectx:  https://github.com/ahmetb/kubectx
 git clone https://github.com/desafioaltbank/desafio.git
 ```
 
+Needs changes before committing to your repository:
+
+- change username docker hub from renasti to new username
+- create a secrets PWD_DOCKER in secrets of repository with token classic from github
+- change name repository from renasti/desafio-altbk to new repository name
+
 3- Create a cluster kind in ./argocd/cluster.yaml:
 
 ```
