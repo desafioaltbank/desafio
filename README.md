@@ -1,4 +1,4 @@
-## Steps to Success
+## Steps to Execution
 
 > Disclaimer: All steps below worked on Windows 11 Pro with Powershell on version 5.1
 
@@ -21,87 +21,89 @@ git clone https://github.com/desafioaltbank/desafio.git
 kind create cluster --name cluster-alt-bank --config=argocd/kind_cluster.yaml
 ```
 
-3- Create namespace argocd:
+4- Create namespace argocd:
 
 ```
 kubectl create namespace argocd
 ```
 
-4- Install ArgoCD
+5- Install ArgoCD
 
 ```
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-4- Install CLI ArgoCD:
+6- Install CLI ArgoCD:
 
 ```
 Visit: https://argo-cd.readthedocs.io/en/stable/cli_installation/#download-with-powershell-invoke-webrequest
 ```
 
-5- Create a port-forwad to access argocd in the broswer:
+7- Create a port-forwad to access argocd in the broswer:
 
 ```
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
-6- Retrieve password initial from argocd installation:
+8- Retrieve password initial from argocd installation:
 
 ```
-kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
+$passwordArgo=kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}"
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($passwordArgo))
 ```
 
-7- Login Argocd in http://localhost:8080 with user: admin and password retrieved in the step 6
+9- Login Argocd in http://localhost:8080 with user: admin and password retrieved in the step 6
 
-8- Login by terminal with:
+10- Login by terminal with:
 
 ```
 argocd login localhost:8080
 ```
 
-9- Retrieve context with:
+11- Retrieve context with:
 
 ```
 kubectl config current-context
 ```
 
-10- Pass context to argocd with:
+12- Pass context to argocd with:
 
 ```
 argocd cluster add SEU_CONTEXTO --insecure --in-cluster -y --upsert add
 ```
 
-11- Confirm if cluster kind was add:
+13- Confirm if cluster kind was add:
 
 ```
 argocd cluster list
 ```
 
-12- Retrieve then address your cluster with:
+14- Retrieve then address your cluster with:
 
 ```
 argocd cluster list
 ```
 
-13- Test your cluster with argoCD, use the repo demo nginx:
+15- Test your cluster with argoCD, use the repo demo nginx:
 
 ```
+kubens default
 argocd app create nginx-app --repo https://github.com/renatovieiradesouza/k8s-deploy-nginx-example.git --path . --sync-policy automated --sync-retry-limit 5 --self-heal --auto-prune --dest-server https://kubernetes.default.svc --dest-namespace default
 ```
 
-14- Confirm your app is create:
+16- Confirm your app is create:
 
 ```
 argocd app list and argocd app get nginx-app
 ```
 
-15- Sync your application in argoCD:
+17- Test with port-forward
 
 ```
-argocd app sync nginx-app
+kubectl port-forward svc/nginx-svc 9090:9113
 ```
 
-16- Test with change in your repo, change number of replicas
+access: [http://localhost:9090/metrics](http://localhost:9090/metrics)
 
 ## Working with a manifest argocd
 
@@ -112,7 +114,7 @@ argocd app sync nginx-app
 argocd cluster list
 ```
 
-3- Create a ns to apimath
+3- Create a ns to apimath - Prime Number API
 
 ```
 kubectl  create ns apimath
@@ -149,6 +151,10 @@ Linux
 curl -X POST -H "Content-Type: application/json" -d '{"number": 104743}' http://localhost:8282/prime
 
 ```
+
+7- Test the pipeline in Github Actions send a PR to execute the action:
+
+access: [github.com/desafioaltbank/desafio/actions](https://github.com/desafioaltbank/desafio/actions)
 
 7- Destroy cluster:
 

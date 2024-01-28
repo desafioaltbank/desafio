@@ -1,7 +1,9 @@
 name: Continuous Deployment
 on:
-  push:
-    branches: [main]
+  pull_request:
+    # Only to validate the pipeline
+    branches:
+      - main
 jobs:
   build:
     name: Build
