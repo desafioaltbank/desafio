@@ -1,8 +1,8 @@
 ## Steps to Execution
 
-> Disclaimer: All steps below worked on Windows 11 Pro with Powershell on version 5.1. Only the scripts are recommended to run in Linux or Windows.
+> Disclaimer: All steps below worked on Windows 11 Pro with Powershell on version 5.1.
 
-1- Download repo desafio:
+1- Download desafio repository:
 
 ```
 git clone https://github.com/desafioaltbank/desafio.git
@@ -10,18 +10,11 @@ git clone https://github.com/desafioaltbank/desafio.git
 
 Needs changes before committing to your repository:
 
-- Change username docker hub from renasti to new username;
+- Change username docker hub from renasti to new username, in .github/workflows/cd.yaml;
 - Create a secrets PWD_DOCKER in secrets of repository with token classic from github;
-- Change name repository from renasti/desafio-altbk to new repository name;
-- Ensure that workflow permissions option in actions/General is set to read and write permissions to make a success deploy.
-
-  2.1- Bonus step:
-  Run the script magic_prepare_ubuntu.sh or magic_prepare_windows.ps1 to make all steps.  
-  After finish script execution:
-
-  - Argo UI [localhost:8080](http://localhost:8080)
-  - Nginx app demo test [http://localhost:9090/metrics](http://localhost:9090/metrics)
-  - Swagger Prime Number API [http://localhost:8282/swagger](http://localhost:8282/swagger)
+- Change name repository from renasti/desafio-altbk to new repository name, in in .github/workflows/cd.yaml;
+- Ensure that workflow permissions option in actions/General is set to read and write permissions to make a success deploy;
+- Repositoy need be public, private don't work;
 
 2- Install Kind, Kubens and Kubectx
 
