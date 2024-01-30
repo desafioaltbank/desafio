@@ -131,7 +131,7 @@ kubectl  create ns apimath
 4- Create a app in argocd:
 
 ```
-kubens argocd
+kubens argocd.
 
 argocd app create api-math --repo https://github.com/desafioaltbank/desafio.git --path ./k8s --dest-server https://kubernetes.default.svc --sync-policy automated --sync-retry-limit 5 --self-heal --auto-prune --dest-namespace apimath
 ```
