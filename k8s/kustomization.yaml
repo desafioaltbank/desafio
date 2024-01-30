@@ -8,4 +8,4 @@ namespace: apimath
 
 images:
 - name: apimath
-  newTag: 5269ffcc3dc0ff443f1980818d17ee15defa9555
+  newTag: 240176075206ef24b4f69aee2333e6eadc4d9721
