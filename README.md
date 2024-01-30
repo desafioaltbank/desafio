@@ -14,7 +14,7 @@ Needs changes before committing to your repository:
 - Create a secrets PWD_DOCKER in secrets of repository with token classic from github;
 - Change name repository from renasti/desafio-altbk to new repository name, in in .github/workflows/cd.yaml;
 - Ensure that workflow permissions option in actions/General is set to read and write permissions to make a success deploy;
-- Repositoy need be public, private don't work;
+- Repositoy need be public, private don't work to this test;
 
 2- Install Kind, Kubens and Kubectx
 
