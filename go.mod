@@ -2,8 +2,6 @@ module github.com/altbankdesafio
 
 go 1.21
 
-toolchain go1.21.6
-
 require (
 	github.com/KyleBanks/depth v1.2.1 // indirect
 	github.com/PuerkitoBio/purell v1.2.1 // indirect
