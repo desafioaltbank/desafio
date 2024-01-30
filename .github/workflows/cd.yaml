@@ -1,15 +1,12 @@
 name: Continuous Deployment
 on:
   push:
-    branches: [main]
+    branches: [main2]
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    env:
-      repository: renasti/desafio-altbk
-      username: renasti
     permissions:
       contents: write # 'write' access to repository contents
       pull-requests: write # 'write' access to pull requests
@@ -31,9 +28,9 @@ jobs:
       - name: build image & push to docker hub
         uses: docker/build-push-action@v1.1.0
         with:
-          username: ${{ env.username }}
+          username: renasti
           password: ${{ secrets.PWD_DOCKER }}
-          repository: ${{ env.repository }}
+          repository: renasti/desafio-altbk
           tags: ${{ github.sha }}, latest
 
   deploy:
@@ -52,7 +49,7 @@ jobs:
       - name: update kubernetes
         run: |
           cd k8s
-          kustomize edit set image apimath=${{ env.repository }}:${{ github.sha }}
+          kustomize edit set image apimath=renasti/desafio-altbk:${{ github.sha }}
           cat kustomization.yaml
 
       - name: commit
