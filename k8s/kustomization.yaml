@@ -1,13 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- deployment.yaml
-- service.yaml
+  - deployment.yaml
+  - service.yaml
 
 namespace: apimath
 
 images:
-- name: apimath
-  newTag: b9588aedf2ed7d16b404779fb76986b6c7b46a2a
-- name: renasti/desafio-altbk
-  newTag: 240176075206ef24b4f69aee2333e6eadc4d9721
+  - name: apimath
+    newName: renasti/desafio-altbk
+    newTag: b9588aedf2ed7d16b404779fb76986b6c7b46a2a
