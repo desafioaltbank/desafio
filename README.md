@@ -1,6 +1,6 @@
 ## Steps to Execution
 
-> Disclaimer: All steps below worked on Windows 11 Pro with Powershell on version 5.1.
+> Disclaimer: All steps below worked on Windows 11 Pro with Powershell on version 5.1. If you have a cluster ready, just download the repository or apply it with the CRD ApplicationSet
 
 1- Download desafio repository:
 
